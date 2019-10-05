@@ -1,0 +1,23 @@
+clc
+clear all;
+close all;
+I = imread('sky.JPG');
+I2 = rgb2gray(I);
+I1=im2double((imresize(I2,0.35)));
+%I1 = f(x,y);
+figure,imshow(I1);
+figure,imhist(I1);
+[m,n]=size(I1);
+for i=2:m-1
+    for j=2:n-1
+        w = I1(i-1:i+1,j-1:j+1);
+        m(i,j) = mean(mean(w));
+        g(i,j) = 3.5*I(i,j);
+        k(i,j) = I1(i,j)^g(i,j);
+    end
+end
+figure, imshow(g);
+figure, imshow(k);
+
+        
+        
